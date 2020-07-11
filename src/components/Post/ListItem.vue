@@ -1,6 +1,7 @@
 <template>
-  <b-card title="Title">
-    <span>date</span>
+  <b-card no-body>
+    <h4>{{ post.title }}</h4>
+    <span>{{ post.date }}</span>
     <b-link href="#" class="card-link">Read more</b-link>
     <b-button variant="outline-primary">Edit</b-button>
     <b-button variant="danger">Delete</b-button>
@@ -9,10 +10,8 @@
 
 <script>
 export default {
-  name: "PostListItem",
-  props: ["post"],
-  methods: {
-    
-  }
-}
+  name: 'PostListItem',
+  props: ['post'],
+  methods: {},
+};
 </script>

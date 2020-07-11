@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const app = express();
 
 let posts = [
@@ -17,6 +18,8 @@ let posts = [
     id: 'ji3SGvc6Jok',
   },
 ];
+
+app.use(cors());
 
 app.get('/posts', (req, res) => {
   return res.send(Object.values(posts));
