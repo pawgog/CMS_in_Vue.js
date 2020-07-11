@@ -1,9 +1,9 @@
 <template>
   <div>
     <div v-if="!error"></div>
-    <div class="toast toast-error" v-else>
+    <b-toast variant="danger" class="mb-2" v-else>
       Error!
-    </div>
+    </b-toast>
   </div>
 </template>
 

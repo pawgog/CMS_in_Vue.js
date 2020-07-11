@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div class="container grid-lg">
+    <b-container fluid="lg">
       <header class="navbar">
         <section class="navbar-section">
           <a href="/">Blog</a>
@@ -10,10 +10,10 @@
           <a href="#" class="mr-2">Logout</a>
         </section>
       </header>
-    </div>
-    <div class="container grid-lg">
+    </b-container>
+    <b-container fluid="lg">
       <router-view></router-view>
-    </div>
+    </b-container>
   </div>
 </template>
 
