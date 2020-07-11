@@ -1,6 +1,9 @@
 <template>
   <div>
-    <div v-if="!error"></div>
+    <div v-if="!error">
+      <ListItem />
+      <!-- <ListItem v-for="post in posts" /> -->
+    </div>
     <b-toast variant="danger" class="mb-2" v-else>
       Error!
     </b-toast>
@@ -8,6 +11,8 @@
 </template>
 
 <script>
+import ListItem from './ListItem';
+
 export default {
   name: 'PostList',
   data() {
@@ -16,7 +21,9 @@ export default {
       error: false,
     };
   },
-  components: {},
+  components: {
+    ListItem,
+  },
   methods: {},
 };
 </script>

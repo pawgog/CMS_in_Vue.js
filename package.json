@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "start": "vue-cli-service serve",
+    "server": "nodemon server.js",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
@@ -12,6 +13,8 @@
     "bootstrap": "^4.5.0",
     "bootstrap-vue": "^2.15.0",
     "core-js": "^3.6.5",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.4",
     "vue": "^2.6.11",
     "vue-axios": "^2.1.5",
     "vue-router": "^3.3.4"
