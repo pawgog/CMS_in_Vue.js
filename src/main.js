@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import App from './App.vue';
 import VueAxios from 'vue-axios';
-import BootstrapVue from 'bootstrap-vue';
+import { BootstrapVue, BootstrapVueIcons } from 'bootstrap-vue';
 import axios from 'axios';
 import router from './router/router';
 
@@ -17,6 +17,7 @@ Vue.config.productionTip = false;
 Vue.use(VueAxios, axiosCustom);
 
 Vue.use(BootstrapVue);
+Vue.use(BootstrapVueIcons)
 
 new Vue({
   el: '#app',
