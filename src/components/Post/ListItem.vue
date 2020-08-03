@@ -4,7 +4,7 @@
       <h5>{{ post.title }}</h5>
       <span>{{ post.date }}</span>
     </div>
-    <b-link href="#" class="card-link">Read more</b-link>
+    <router-link :to="{ name: 'post', params: { slug: post.slug }}">Read more</router-link>
     <div>
       <b-button variant="outline-primary"
         ><b-icon icon="pencil"></b-icon
