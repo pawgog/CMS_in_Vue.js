@@ -28,8 +28,6 @@ export default {
     this.$http
       .get('/posts')
       .then(({ data }) => {
-        console.log(data);
-
         this.posts = data;
       })
       .catch(() => {

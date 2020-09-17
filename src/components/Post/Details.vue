@@ -19,6 +19,16 @@ export default {
     return {
       post: {}
     }
+  },
+  created() {
+    this.$http.get(`/post/${this.slug}`)
+      .then(({ data }) => {
+        const [getData] = data
+        this.post = getData;
+      })
+      .catch(() => {
+        console.log(404)
+      });
   }
 };
 </script>

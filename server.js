@@ -21,8 +21,31 @@ let posts = [
 
 app.use(cors());
 
+class HttpError extends Error {
+  constructor(code, message = 'Uh oh, something went wrong.') {
+    super(`${message} HTTP code ${code}`);
+    this.code = code;
+  }
+}
+
 app.get('/posts', (req, res) => {
   return res.send(Object.values(posts));
 });
+
+app.get('/post/:slug', (req, res) => {
+  return res.send(handleGet(req, res, posts, req.params.slug));
+});
+
+function handleGet(req, res, data, filterItem) {
+  if (req.method !== 'GET') {
+    throw new HttpError(405);
+  }
+
+  return data.filter((item) => {
+    if(item.slug === filterItem) {
+      return item
+    }
+  });
+}
 
 app.listen(4001, () => console.log(`Start server 4001.`));
