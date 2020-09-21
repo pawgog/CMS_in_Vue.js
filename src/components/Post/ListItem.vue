@@ -1,11 +1,11 @@
 <template>
   <b-card class="card-content" no-body>
-    <div>
+    <div class="post-details">
       <h5>{{ post.title }}</h5>
       <span>{{ post.date }}</span>
     </div>
     <router-link :to="{ name: 'post', params: { slug: post.slug }}">Read more</router-link>
-    <div>
+    <div class="post-details">
       <b-button variant="outline-primary"
         ><b-icon icon="pencil"></b-icon
       ></b-button>
@@ -33,7 +33,7 @@ export default {
   & button {
     margin-right: 5px;
   }
-  & > div {
+  & .post-details {
     margin: 10px 0;
   }
 }

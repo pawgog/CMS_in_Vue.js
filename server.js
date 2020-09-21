@@ -33,7 +33,13 @@ app.get('/posts', (req, res) => {
 });
 
 app.get('/post/:slug', (req, res) => {
-  return res.send(handleGet(req, res, posts, req.params.slug));
+  const getRequest = handleGet(req, res, posts, req.params.slug);
+  
+  if(typeof getRequest !== 'undefined' && getRequest.length > 0) {
+    return res.send(getRequest)
+  } else {
+    throw new HttpError(404);
+  }
 });
 
 function handleGet(req, res, data, filterItem) {

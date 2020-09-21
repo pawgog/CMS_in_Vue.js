@@ -29,7 +29,7 @@ export default {
         this.post = getData;
       })
       .catch(() => {
-        console.log(404)
+        this.$router.push({ name: "404" })
       });
   }
 };
