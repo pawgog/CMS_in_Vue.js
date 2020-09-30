@@ -6,14 +6,14 @@ let posts = [
   {
     content: 'Content first paragraph.',
     title: 'Title 1',
-    date: '23-07-2009',
+    date: '2009-07-23',
     slug: 'title-first-item',
     id: 'Frt4R2gVH',
   },
   {
     content: 'Content second paragraph.',
     title: 'Title 2',
-    date: '05-02-2011',
+    date: '2011-02-05',
     slug: 'title-second-item',
     id: 'ji3SGvc6Jok',
   },

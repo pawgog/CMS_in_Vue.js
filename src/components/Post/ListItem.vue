@@ -6,9 +6,11 @@
     </div>
     <router-link :to="{ name: 'post', params: { slug: post.slug }}">Read more</router-link>
     <div class="post-details">
-      <b-button variant="outline-primary"
-        ><b-icon icon="pencil"></b-icon
-      ></b-button>
+      <router-link :to="{ name: 'postEdit', params: { slug: post.slug } }">
+        <b-button variant="outline-primary"
+          ><b-icon icon="pencil"></b-icon
+        ></b-button>
+      </router-link>
       <b-button variant="danger"><b-icon icon="x-circle"></b-icon></b-button>
     </div>
   </b-card>
