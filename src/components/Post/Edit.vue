@@ -14,7 +14,7 @@
         <b-form-group id="input-group-3" label="Content" label-for="content">
           <b-form-textarea id="content" v-model="post.content" rows="3" max-rows="6"></b-form-textarea>
         </b-form-group>
-        <b-button type="submit" variant="primary">Submit</b-button>
+        <b-button type="submit" variant="primary" :disabled="!filled">Submit</b-button>
       </b-form>
     </div>
   </b-card>
@@ -35,10 +35,23 @@ export default {
       },
     };
   },
-  computed: {},
+  computed: {
+    filled() {
+      const { title, date, content} = this.post;
+      return title && date && content;
+    }
+  },
   methods: {
-    onSubmit(e) {
-      console.log("submit", e);
+    onSubmit() {
+      const { title, date, content} = this.post;
+      this.$http.put(`/post/${this.slug}`, {
+        title,
+        date,
+        content,
+      })
+      .then(({ data }) => {
+        this.$router.push({ name: "post", params: { slug: data.slug } });
+      });
     },
   },
   created() {
