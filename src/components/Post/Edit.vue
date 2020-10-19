@@ -44,13 +44,16 @@ export default {
   methods: {
     onSubmit() {
       const { title, date, content} = this.post;
-      this.$http.put(`/post/${this.slug}`, {
+      this.$http.put(`/post/${this.post.id}`, {
         title,
         date,
         content,
       })
       .then(({ data }) => {
         this.$router.push({ name: "post", params: { slug: data.slug } });
+      })
+      .catch(() => {
+        this.error = true;
       });
     },
   },
