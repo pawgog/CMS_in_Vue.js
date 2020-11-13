@@ -21,6 +21,9 @@ let posts = [
 
 app.use(cors());
 
+app.use(express.json());
+app.use(express.urlencoded());
+
 class HttpError extends Error {
   constructor(code, message = 'Uh oh, something went wrong.') {
     super(`${message} HTTP code ${code}`);
@@ -63,5 +66,20 @@ function handleGet(req, res, data, filterItem) {
     }
   });
 }
+
+app.put('/post/:id', (req, res) => {
+  const id = req.params.id;
+  const newPost = req.body;
+
+  for (let i = 0; i < posts.length; i++) {
+      let post = posts[i]
+      if (post.id === id) {
+        posts[i] = Object.assign(newPost, {slug: posts[i].slug});
+        return posts[i].slug
+      }     
+  }
+
+  res.send('Post is edited');
+});
 
 app.listen(4001, () => console.log(`Start server 4001.`));
