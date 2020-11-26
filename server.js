@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const app = express();
+const { v4: uuidv4 } = require('uuid');
 
 let posts = [
   {
@@ -37,7 +38,7 @@ app.get('/posts', (req, res) => {
 
 app.get('/post/:slug', (req, res) => {
   const getRequest = handleGet(req, res, posts, req.params.slug);
-  
+
   if(typeof getRequest !== 'undefined' && getRequest.length > 0) {
     return res.send(getRequest)
   } else {
@@ -53,6 +54,10 @@ app.get('/post/:slug/edit', (req, res) => {
   } else {
     throw new HttpError(404);
   }
+});
+
+app.get('/post/:slug/add', (req, res) => {
+  res.redirect('/');
 });
 
 function handleGet(req, res, data, filterItem) {
@@ -80,6 +85,21 @@ app.put('/post/:id', (req, res) => {
   }
 
   res.send('Post is edited');
+});
+
+app.post('/posts', (req, res) => {
+  const id = uuidv4();
+  const slug = req.body.title.toLowerCase().split(' ').join('-');
+  const post = {
+    content: req.body.content,
+    title: req.body.title,
+    date: req.body.date,
+    slug,
+    id
+  };
+  
+  posts.push(post);
+  return res.send(post);
 });
 
 app.listen(4001, () => console.log(`Start server 4001.`));

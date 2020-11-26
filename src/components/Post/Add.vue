@@ -43,7 +43,19 @@ export default {
   },
   methods: {
     onSave() {
-
+      const { title, date, content} = this.post;
+      this.$http
+        .post('/posts', {
+          title,
+          date,
+          content
+        })
+        .then(({ data }) => {
+          this.$router.push({ name: "post", params: { slug: data.slug } });
+        })
+        .catch(() => {
+          this.error = true;
+        });
     },
   },
 };
