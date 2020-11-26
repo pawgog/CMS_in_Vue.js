@@ -14,6 +14,7 @@
         <b-form-group id="input-group-3" label="Content" label-for="content">
           <b-form-textarea id="content" v-model="post.content" rows="3" max-rows="6"></b-form-textarea>
         </b-form-group>
+        <b-button variant="danger" @click="$router.go(-1)">Back</b-button>
         <b-button type="submit" variant="primary" :disabled="!filled">Submit</b-button>
       </b-form>
     </div>
