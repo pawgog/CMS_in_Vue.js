@@ -11,7 +11,7 @@
           ><b-icon icon="pencil"></b-icon
         ></b-button>
       </router-link>
-      <b-button variant="danger"><b-icon icon="x-circle"></b-icon></b-button>
+      <b-button variant="danger" @click="remove"><b-icon icon="x-circle"></b-icon></b-button>
     </div>
   </b-card>
 </template>
@@ -20,7 +20,11 @@
 export default {
   name: 'PostListItem',
   props: ['post'],
-  methods: {},
+  methods: {
+    remove() {
+      this.$emit('remove', this.post.id)
+    }
+  },
 };
 </script>
 

@@ -57,7 +57,13 @@ app.get('/post/:slug/edit', (req, res) => {
 });
 
 app.get('/post/:slug/add', (req, res) => {
-  res.redirect('/');
+  const getRequest = handleGet(req, res, posts, req.params.slug);
+  
+  if(typeof getRequest !== 'undefined' && getRequest.length > 0) {
+    return res.send(getRequest)
+  } else {
+    throw new HttpError(404);
+  }
 });
 
 function handleGet(req, res, data, filterItem) {
@@ -97,7 +103,7 @@ app.post('/posts', (req, res) => {
     slug,
     id
   };
-  
+
   posts.push(post);
   return res.send(post);
 });

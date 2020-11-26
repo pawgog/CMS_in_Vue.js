@@ -1,7 +1,7 @@
 <template>
   <div>
     <div v-if="!error">
-      <ListItem v-for="post in posts" :post="post" :key="post.id" />
+      <ListItem v-for="post in posts" :post="post" :key="post.id" @remove="removePost" />
     </div>
     <b-toast variant="danger" class="mb-2" v-else>
       Error!
@@ -23,7 +23,20 @@ export default {
   components: {
     ListItem,
   },
-  methods: {},
+  methods: {
+    removePost(id) {
+      if (confirm('Are you sure to delete the post?')) {
+        this.$http.delete(`/post/${id}`)
+        .then(({ data }) => {
+          console.log(data);
+        })
+        .catch(() => {
+          alert('Something goes wrong!')
+        });
+      }
+      
+    }
+  },
   created() {
     this.$http
       .get('/posts')
