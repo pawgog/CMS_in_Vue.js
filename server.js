@@ -108,4 +108,10 @@ app.post('/posts', (req, res) => {
   return res.send(post);
 });
 
+app.delete('/post/:postId', (req, res) => {
+  const newPostList = posts.find(val => val.id !== req.params.id);
+  
+  return res.send(newPostList);
+});
+
 app.listen(4001, () => console.log(`Start server 4001.`));

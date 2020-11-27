@@ -29,6 +29,8 @@ export default {
         this.$http.delete(`/post/${id}`)
         .then(({ data }) => {
           console.log(data);
+          const index = this.posts.findIndex(post => post.id === id);
+          this.posts.splice(index, 1)
         })
         .catch(() => {
           alert('Something goes wrong!')
