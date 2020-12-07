@@ -33,7 +33,7 @@ class HttpError extends Error {
 }
 
 app.get('/posts', (req, res) => {
-  return res.send(Object.values(posts));
+  return res.json(posts)
 });
 
 app.get('/post/:slug', (req, res) => {

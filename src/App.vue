@@ -7,8 +7,6 @@
         </section>
         <section class="navbar-section">
           <router-link :to="{ name: 'postAdd' }" class="mr-2">Add New Post</router-link>
-          <a href="#" class="mr-2">Login</a>
-          <a href="#" class="mr-2">Logout</a>
         </section>
       </header>
     </b-container>
