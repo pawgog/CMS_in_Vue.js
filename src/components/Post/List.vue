@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="!error">
+    <div class="list-content" v-if="!error">
       <ListItem v-for="post in posts" :post="post" :key="post.id" @remove="removePost" />
     </div>
     <b-toast variant="danger" class="mb-2" v-else>
@@ -51,3 +51,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+  .list-content {
+    display: flex;
+  }
+</style>

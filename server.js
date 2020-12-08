@@ -10,6 +10,7 @@ let posts = [
     date: '2009-07-23',
     slug: 'title-first-item',
     id: 'Frt4R2gVH',
+    img: 'https://image.shutterstock.com/image-photo/female-hands-working-on-laptop-600w-1591212466.jpg'
   },
   {
     content: 'Content second paragraph.',
@@ -17,6 +18,15 @@ let posts = [
     date: '2011-02-05',
     slug: 'title-second-item',
     id: 'ji3SGvc6Jok',
+    img: 'https://image.shutterstock.com/image-photo/family-funny-attractive-pineapples-stylish-600w-627188573.jpg'
+  },
+  {
+    content: 'Content second paragraph.',
+    title: 'Title 3',
+    date: '2011-12-25',
+    slug: 'title-third-item',
+    id: 'nsruhc72kdc',
+    img: 'https://image.shutterstock.com/image-photo/interior-spring-yard-patio-wooden-600w-1681464937.jpg'
   },
 ];
 

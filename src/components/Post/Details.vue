@@ -1,5 +1,5 @@
 <template>
-  <b-card class="card-content" no-body>
+  <b-card class="card-content card-details" no-body>
     <div>
       <h5>{{ post.title }}</h5>
       <span>{{ post.date }}</span>
@@ -34,3 +34,12 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+  .card-details {
+    padding: 20px;
+  }
+  .card-body {
+    padding: 1.25rem 0;
+  }
+</style>
