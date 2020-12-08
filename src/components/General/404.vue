@@ -10,7 +10,12 @@
 
 <script>
 export default {
-  name: "NotFound"
+  name: "NotFound",
+  methods: {
+    backToHome() {
+      this.$router.push({ name: "home" })
+    }    
+  }
 }
 </script>
 
