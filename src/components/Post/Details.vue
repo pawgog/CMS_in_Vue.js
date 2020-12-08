@@ -14,6 +14,8 @@
 </template>
 
 <script>
+import { server } from "../../utils/helper";
+
 export default {
   name: 'PostDetails',
   props: ["slug"],
@@ -23,7 +25,7 @@ export default {
     }
   },
   created() {
-    this.$http.get(`/post/${this.slug}`)
+    this.$http.get(`${server.serverURL}/post/${this.slug}`)
       .then(({ data }) => {
         const [getData] = data
         this.post = getData;

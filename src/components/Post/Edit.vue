@@ -22,6 +22,8 @@
 </template>
 
 <script>
+import { server } from "../../utils/helper";
+
 export default {
   name: "PostEdit",
   props: ["slug"],
@@ -45,7 +47,7 @@ export default {
   methods: {
     onSubmit() {
       const { id, title, date, content} = this.post;
-      this.$http.put(`/post/${id}`, {
+      this.$http.put(`${server.serverURL}/post/${id}`, {
         id,
         title,
         date,
@@ -58,7 +60,7 @@ export default {
   },
   created() {
     this.$http
-      .get(`/post/${this.slug}`)
+      .get(`${server.serverURL}/post/${this.post.id}`)
       .then(({ data }) => {
         const [getData] = data;
         this.post = getData;

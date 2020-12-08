@@ -11,6 +11,7 @@
 
 <script>
 import ListItem from './ListItem';
+import { server } from "../../utils/helper";
 
 export default {
   name: 'PostList',
@@ -26,7 +27,7 @@ export default {
   methods: {
     removePost(id) {
       if (confirm('Are you sure to delete the post?')) {
-        this.$http.delete(`/post/${id}`)
+        this.$http.delete(`${server.serverURL}/post/${id}`)
         .then(({ data }) => {
           console.log(data);
           const index = this.posts.findIndex(post => post.id === id);
@@ -40,12 +41,13 @@ export default {
     }
   },
   created() {
-    this.$http
-      .get('/posts')
-      .then(({ data }) => {
+      this.$http
+        .get(`${server.serverURL}/posts`)
+        .then(({ data }) => {
+        console.log(data);
         this.posts = data;
-      })
-      .catch(() => {
+    })
+    .catch(() => {
         this.error = true;
       });
   },

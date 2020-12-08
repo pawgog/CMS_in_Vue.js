@@ -22,6 +22,8 @@
 </template>
 
 <script>
+import { server } from "../../utils/helper";
+
 export default {
   name: "PostAdd",
   data() {
@@ -45,7 +47,7 @@ export default {
     onSave() {
       const { title, date, content} = this.post;
       this.$http
-        .post('/posts', {
+        .post(`${server.serverURL}/posts`, {
           title,
           date,
           content
