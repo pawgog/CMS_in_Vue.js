@@ -3,13 +3,19 @@
     <div class="text-error">
       <h3><b-icon icon="exclamation-circle"></b-icon>404</h3>
       <h4>Page not found!</h4>
+      <b-button variant="danger" @click="backToHome">Back</b-button>
     </div>
   </b-card>
 </template>
 
 <script>
 export default {
-  name: "NotFound"
+  name: "NotFound",
+  methods: {
+    backToHome() {
+      this.$router.push({ name: "home" })
+    }    
+  }
 }
 </script>
 
