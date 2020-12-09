@@ -27,8 +27,7 @@ export default {
   created() {
     this.$http.get(`${server.serverURL}/post/${this.slug}`)
       .then(({ data }) => {
-        const [getData] = data
-        this.post = getData;
+        this.post = data;
       })
       .catch(() => {
         this.$router.push({ name: "404" })
