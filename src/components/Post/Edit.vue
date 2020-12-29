@@ -8,8 +8,8 @@
         <b-form-group id="input-group-1" label="Title:" label-for="title">
           <b-form-input id="title" v-model="post.title" type="text" required></b-form-input>
         </b-form-group>
-        <b-form-group id="input-group-2" label="Date:" label-for="date">
-          <b-form-input id="date" v-model="post.date" type="date" required></b-form-input>
+        <b-form-group id="input-group-2" label="Date:" label-for="date_posted">
+          <b-form-input id="date_posted" v-model="post.date_posted" type="date" required></b-form-input>
         </b-form-group>
         <b-form-group id="input-group-3" label="Content" label-for="content">
           <b-form-textarea id="content" v-model="post.content" rows="3" max-rows="6"></b-form-textarea>
@@ -33,24 +33,24 @@ export default {
       error: false,
       form: {
         title: "",
-        date: "",
+        date_posted: "",
         content: "",
       },
     };
   },
   computed: {
     filled() {
-      const { title, date, content} = this.post;
-      return title && date && content;
+      const { title, date_posted, content} = this.post;
+      return title && date_posted && content;
     }
   },
   methods: {
     onSubmit() {
-      const { id, title, date, content} = this.post;
-      this.$http.put(`${server.serverURL}/post/${id}`, {
-        id,
+      const { _id, title, date_posted, content} = this.post;
+      this.$http.put(`${server.serverURL}/post/${_id}`, {
+        _id,
         title,
-        date,
+        date_posted,
         content,
       })
       .catch(() => {
@@ -60,10 +60,9 @@ export default {
   },
   created() {
     this.$http
-      .get(`${server.serverURL}/post/${this.post.id}`)
+      .get(`${server.serverURL}/post/${this.slug}`)
       .then(({ data }) => {
-        const [getData] = data;
-        this.post = getData;
+        this.post = data;
       })
       .catch(() => {
         this.$router.push({ name: "404" });

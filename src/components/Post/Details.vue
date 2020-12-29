@@ -2,7 +2,7 @@
   <b-card class="card-content card-details" no-body>
     <div>
       <h5>{{ post.title }}</h5>
-      <span>{{ post.date }}</span>
+      <span>{{ post.date_posted }}</span>
     </div>
     <div class="card-body" v-html="post.content"></div>
     <div>

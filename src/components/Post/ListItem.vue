@@ -1,9 +1,9 @@
 <template>
-  <b-card class="card-content" no-body>
+  <b-card class="card-content card-item" no-body>
     <b-img :src="post.img"></b-img>
     <div class="post-details">
       <h5>{{ post.title }}</h5>
-      <span>{{ post.date }}</span>
+      <span>{{ post.date_posted }}</span>
       <router-link :to="{ name: 'post', params: { slug: post.slug }}">Read more</router-link>
       <div class="btn-list">
         <router-link :to="{ name: 'postEdit', params: { slug: post.slug } }">
@@ -23,7 +23,7 @@ export default {
   props: ['post'],
   methods: {
     remove() {
-      this.$emit('remove', this.post.id)
+      this.$emit('remove', this.post._id)
     }
   },
 };
@@ -31,7 +31,6 @@ export default {
 
 <style lang="scss">
   .card-content {
-    width: 25%;
     margin: 20px 10px;
 
     & img {
@@ -52,5 +51,8 @@ export default {
     & .btn-list {
       margin: 10px 0;
     }
+  }
+  .card-item {
+    width: 25%;
   }
 </style>
