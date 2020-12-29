@@ -57,5 +57,6 @@ export default {
 <style scoped>
   .list-content {
     display: flex;
+    flex-wrap: wrap;
   }
 </style>

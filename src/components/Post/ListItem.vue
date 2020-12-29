@@ -31,6 +31,7 @@ export default {
 
 <style lang="scss">
   .card-content {
+    width: 25%;
     margin: 20px 10px;
 
     & img {
