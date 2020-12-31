@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="list-content" v-if="!error">
+    <div class="list-content d-flex justify-content-center" v-if="!error">
       <ListItem v-for="post in posts" :post="post" :key="post.id" @remove="removePost" />
     </div>
     <b-toast variant="danger" class="mb-2" v-else>
@@ -27,10 +27,9 @@ export default {
   methods: {
     removePost(id) {
       if (confirm('Are you sure to delete the post?')) {
-        this.$http.delete(`${server.serverURL}/post/${id}`)
-        .then(({ data }) => {
-          console.log(data);
-          const index = this.posts.findIndex(post => post.id === id);
+        this.$http.delete(`${server.serverURL}/delete/${id}`)
+        .then(() => {
+          const index = this.posts.findIndex(post => post._id === id);
           this.posts.splice(index, 1)
         })
         .catch(() => {

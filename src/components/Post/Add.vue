@@ -4,7 +4,7 @@
       <h3>Add post</h3>
     </div>
     <div class="card-body">
-      <b-form @submit="onSave">
+      <b-form @submit.prevent="onSave">
         <b-form-group id="input-group-1" label="Title:" label-for="title">
           <b-form-input id="title" v-model="post.title" type="text" required></b-form-input>
         </b-form-group>
@@ -63,7 +63,8 @@ export default {
           img,
         })
         .then(({ data }) => {
-          this.$router.push({ name: "post", params: { slug: data.slug } });
+          const { slug } = data.post;
+          this.$router.push({ path: `/post/${slug}` });
         })
         .catch(() => {
           this.error = true;

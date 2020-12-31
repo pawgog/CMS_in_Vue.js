@@ -35,7 +35,7 @@ export default {
 
     & img {
       max-width: 100%;
-      max-height: 250px;
+      min-height: 180px;
     }
     & .post-details {
       display: flex;
