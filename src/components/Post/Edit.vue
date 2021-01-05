@@ -4,7 +4,7 @@
       <h3>Edit post</h3>
     </div>
     <div class="card-body">
-      <b-form @submit="onSubmit">
+      <b-form @submit.prevent="onSubmit">
         <b-form-group id="input-group-1" label="Title:" label-for="title">
           <b-form-input id="title" v-model="post.title" type="text" required></b-form-input>
         </b-form-group>
@@ -55,13 +55,17 @@ export default {
   methods: {
     onSubmit() {
       const { _id, title, author, date_posted, content, img } = this.post;
-      this.$http.put(`${server.serverURL}/post/${_id}`, {
+      this.$http.put(`${server.serverURL}/edit/${_id}`, {
         _id,
         title,
         author,
         date_posted,
         content,
         img,
+      })
+      .then(({ data }) => {
+        const { slug } = data.post;
+        this.$router.push({ path: `/post/${slug}` });
       })
       .catch(() => {
         this.error = true;

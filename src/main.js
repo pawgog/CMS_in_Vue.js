@@ -8,6 +8,8 @@ import router from './router/router';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
 
+import './assets/global.css';
+
 const axiosCustom = axios.create({
   baseURL: 'http://localhost:4001',
 });

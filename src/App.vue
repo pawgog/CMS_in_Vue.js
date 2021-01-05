@@ -6,7 +6,7 @@
           <a href="/">Blog</a>
         </section>
         <section class="navbar-section">
-          <router-link :to="{ name: 'postAdd' }" class="mr-2">Add New Post</router-link>
+          <router-link :to="{ name: 'postAdd' }" class="mr-2"><b-icon class="h2" icon="calendar2-plus"></b-icon></router-link>
         </section>
       </header>
     </b-container>
@@ -22,9 +22,19 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
 .container {
   margin-top: 100px;
   margin-bottom: 100px;
+
+  &-lg .navbar {
+    align-items: normal;
+    font-weight: 700;
+
+    &-section {
+      margin-top: 10px;
+      font-size: 20px;
+    }  
+  }
 }
 </style>

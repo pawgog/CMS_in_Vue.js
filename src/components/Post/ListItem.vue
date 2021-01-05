@@ -4,7 +4,7 @@
     <div class="post-details">
       <h5>{{ post.title }}</h5>
       <span>{{ post.date_posted }}</span>
-      <router-link :to="{ name: 'post', params: { slug: post.slug }}">Read more</router-link>
+      <router-link :to="{ name: 'post', params: { slug: post.slug }}"><b-button size="sm">Read more...</b-button></router-link>
       <div class="btn-list">
         <router-link :to="{ name: 'postEdit', params: { slug: post.slug } }">
           <b-button variant="outline-primary"
@@ -43,6 +43,7 @@ export default {
       padding: 20px;
     }
     & span {
+      margin: 10px 0;
       font-size: 12px;
     }
     & button {
