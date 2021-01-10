@@ -1,16 +1,25 @@
 <template>
-  <b-card class="card-content card-details" no-body>
-    <div>
-      <h5>{{ post.title }}</h5>
-      <span>{{ post.date_posted }}</span>
-    </div>
-    <div class="card-body" v-html="post.content"></div>
-    <div>
-      <b-button variant="danger" @click="$router.push({ name: 'home' })">
-        <b-icon icon="arrow-left"></b-icon>Back
-      </b-button>
-    </div>
-  </b-card>
+  <div>
+    <b-img :src="post.img" center fluid alt="Responsive image"></b-img>
+    <b-card class="card-content" no-body>
+
+      <div class="card-details">
+        <div>
+          <h5>{{ post.author }}</h5>
+          <h4>{{ post.title }}</h4>        
+        </div>
+        <div>
+          <span>{{ post.date_posted }}</span>
+        </div>
+      </div>
+      <div class="card-body" v-html="post.content"></div>
+      <div>
+        <b-button variant="danger" @click="$router.push({ name: 'home' })">
+          <b-icon icon="arrow-left"></b-icon>Back
+        </b-button>
+      </div>
+    </b-card>
+  </div>
 </template>
 
 <script>
@@ -36,11 +45,25 @@ export default {
 };
 </script>
 
-<style scoped>
-  .card-details {
-    padding: 20px;
-  }
-  .card-body {
-    padding: 1.25rem 0;
+<style lang="scss" scoped>
+  .card {
+    &-content {
+      width: 60%;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    &-details {
+      display: flex;
+      justify-content: space-between;
+      & h5 {
+        margin-bottom: 15px;
+        color: grey;
+        text-transform: capitalize;
+        font-style: italic;
+      }
+    }
+    &-body {
+      padding: 1.25rem 0;
+    }
   }
 </style>
