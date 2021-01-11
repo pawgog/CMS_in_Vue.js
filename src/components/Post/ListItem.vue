@@ -2,8 +2,8 @@
   <b-card class="card-content card-item" no-body>
     <b-img :src="post.img"></b-img>
     <div class="post-details">
-      <h5>{{ post.title }}</h5>
       <span>{{ post.date_posted }}</span>
+      <h5>{{ post.title }}</h5>
       <router-link :to="{ name: 'post', params: { slug: post.slug }}"><b-button size="sm">Read more...</b-button></router-link>
       <div class="btn-list">
         <router-link :to="{ name: 'postEdit', params: { slug: post.slug } }">
@@ -43,8 +43,12 @@ export default {
       padding: 20px;
     }
     & span {
-      margin: 10px 0;
+      margin-bottom: 10px;
       font-size: 12px;
+      text-align: right;
+    }
+    & h5 {
+      margin: 5px 0 30px 0;
     }
     & button {
       margin-right: 5px;

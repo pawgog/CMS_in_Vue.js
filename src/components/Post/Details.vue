@@ -49,7 +49,7 @@ export default {
   .card {
     &-content {
       width: 60%;
-      margin: 0 auto;
+      margin: 20px auto;
       padding: 20px;
     }
     &-details {
@@ -64,6 +64,7 @@ export default {
     }
     &-body {
       padding: 1.25rem 0;
+      margin-bottom: 1rem;
     }
   }
 </style>
