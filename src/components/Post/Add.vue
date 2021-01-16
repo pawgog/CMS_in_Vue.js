@@ -22,6 +22,9 @@
         </b-form-group>
         <b-button variant="danger" @click="$router.go(-1)">Back</b-button>
         <b-button type="submit" variant="primary" :disabled="!filled">Submit</b-button>
+        <div class="card-body__error" v-if="!filled">
+          <span>All inputs are required!</span>
+        </div>
       </b-form>
     </div>
   </b-card>
@@ -35,6 +38,7 @@ export default {
   data() {
     return {
       post: {},
+      errors: [],
       error: false,
       form: {
         title: "",
@@ -54,6 +58,18 @@ export default {
   methods: {
     onSave() {
       const { title, author, date_posted, content, img } = this.post;
+      this.errors = [];
+
+      if (!title) {
+        this.errors.push("Title is required.");
+      }
+      if (!author) {
+        this.errors.push('Author is required.');
+      }
+      if (!this.errors.length) {
+        return true;
+      }
+
       this.$http
         .post(`${server.serverURL}/post`, {
           title,
@@ -73,3 +89,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+  .card-body__error {
+    color: red;
+  }
+</style>
