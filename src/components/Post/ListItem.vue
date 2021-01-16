@@ -31,7 +31,7 @@ export default {
 
 <style lang="scss">
   .card-content {
-    margin: 20px 10px;
+    margin: 20px;
 
     & img {
       max-width: 100%;
