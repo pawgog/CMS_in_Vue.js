@@ -20,8 +20,13 @@
         <b-form-group id="input-group-5" label="Image url:" label-for="img">
           <b-form-textarea id="img" v-model="post.img" type="text"></b-form-textarea>
         </b-form-group>
-        <b-button variant="danger" @click="$router.go(-1)">Back</b-button>
-        <b-button type="submit" variant="primary" :disabled="!filled">Submit</b-button>
+        <div class="card-body__buttons">
+          <b-button variant="danger" @click="$router.go(-1)">Back</b-button>
+          <b-button type="submit" variant="primary" :disabled="!filled">Submit</b-button>
+          <div class="card-body__error" v-if="!filled">
+            <span>(All inputs are required!)</span>
+          </div>
+        </div>
       </b-form>
     </div>
   </b-card>
@@ -84,3 +89,15 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+  .card-body {
+    &__buttons {
+      display: flex;
+      align-items: center;
+    }
+    &__error {
+      color: red;
+    }
+  }
+</style>
