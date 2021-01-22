@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-img :src="post.img" center fluid alt="Responsive image"></b-img>
+    <b-img :src="post.img" center fluid :alt="post.title"></b-img>
     <b-card class="card-content" no-body>
 
       <div class="card-details">
@@ -15,7 +15,7 @@
       <div class="card-body" v-html="post.content"></div>
       <div>
         <b-button variant="danger" @click="$router.push({ name: 'home' })">
-          <b-icon icon="arrow-left"></b-icon>Back
+          <b-icon icon="arrow-left">Back</b-icon>
         </b-button>
       </div>
     </b-card>
