@@ -1,3 +1,3 @@
 export const server = {
-  serverURL: 'http://localhost:3000/blog',
+  serverURL: 'https://vue-blog-321.herokuapp.com/blog',
 };
