@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-img :src="post.img" center fluid :alt="post.title"></b-img>
+    <div class="card-image" v-bind:style="{ backgroundImage: url('post.img') }"></div>
     <b-card class="card-content" no-body>
 
       <div class="card-details">
