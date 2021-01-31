@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="card-image" v-bind:style="{ backgroundImage: url('post.img') }"></div>
+    <div class="card-image" v-bind:style="{ backgroundImage: `url(${post.img})` }"></div>
     <b-card class="card-content" no-body>
 
       <div class="card-details">
@@ -47,6 +47,13 @@ export default {
 
 <style lang="scss" scoped>
   .card {
+    &-image {
+      background-size: cover;
+      background-position: center;
+      width: 80%;
+      height: 50vh;
+      margin: 0 auto;
+    }
     &-content {
       width: 60%;
       margin: 20px auto;
