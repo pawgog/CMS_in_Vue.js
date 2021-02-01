@@ -1,6 +1,6 @@
 <template>
   <b-card class="card-content card-item" no-body>
-    <b-img :src="post.img"></b-img>
+    <div class="card-content-img" v-bind:style="{ backgroundImage: `url(${post.img})` }"></div>
     <div class="post-details">
       <span>{{ post.date_posted }}</span>
       <h5>{{ post.title }}</h5>
@@ -33,9 +33,12 @@ export default {
   .card-content {
     margin: 20px;
 
-    & img {
-      max-width: 100%;
-      min-height: 180px;
+    &-img {
+      background-size: cover;
+      background-position: center;
+      width: 100%;
+      height: 25vh;
+      margin: 0 auto;
     }
     & .post-details {
       display: flex;
