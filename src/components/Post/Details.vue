@@ -1,24 +1,28 @@
 <template>
   <div>
-    <div class="card-image" v-bind:style="{ backgroundImage: `url(${post.img})` }"></div>
-    <b-card class="card-content" no-body>
-
-      <div class="card-details">
-        <div>
-          <h5>{{ post.author }}</h5>
-          <h4>{{ post.title }}</h4>        
-        </div>
-        <div>
-          <span>{{ post.date_posted }}</span>
-        </div>
+      <div class="spinner" v-if="loading">
+        <b-spinner label="Loading..."></b-spinner>
       </div>
-      <div class="card-body" v-html="post.content"></div>
-      <div>
-        <b-button variant="danger" @click="$router.push({ name: 'home' })">
-          <b-icon icon="arrow-left">Back</b-icon>
-        </b-button>
-      </div>
-    </b-card>
+      <div v-else>
+      <div class="card-image" v-bind:style="{ backgroundImage: `url(${post.img})` }"></div>
+      <b-card class="card-content" no-body>
+        <div class="card-details">
+          <div>
+            <h5>{{ post.author }}</h5>
+            <h4>{{ post.title }}</h4>
+          </div>
+          <div>
+            <span>{{ post.date_posted }}</span>
+          </div>
+        </div>
+        <div class="card-body" v-html="post.content"></div>
+        <div>
+          <b-button variant="danger" @click="$router.push({ name: 'home' })">
+            <b-icon icon="arrow-left">Back</b-icon>
+          </b-button>
+        </div>
+      </b-card>
+    </div>
   </div>
 </template>
 
@@ -30,7 +34,8 @@ export default {
   props: ["slug"],
   data() {
     return {
-      post: {}
+      post: {},
+      loading: true,
     }
   },
   created() {
@@ -40,6 +45,9 @@ export default {
       })
       .catch(() => {
         this.$router.push({ name: "404" })
+      })
+      .then(()=> {
+        this.loading = false;
       });
   }
 };

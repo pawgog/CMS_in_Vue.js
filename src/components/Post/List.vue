@@ -1,11 +1,16 @@
 <template>
   <div>
-    <div class="list-content d-flex justify-content-center" v-if="!error">
-      <ListItem v-for="post in posts" :post="post" :key="post.id" @remove="removePost" />
+    <div class="spinner" v-if="loading">
+      <b-spinner label="Loading..."></b-spinner>
     </div>
-    <b-toast variant="danger" class="mb-2" v-else>
-      Error!
-    </b-toast>
+    <div v-else>
+      <div class="list-content d-flex justify-content-center" v-if="!error">
+        <ListItem v-for="post in posts" :post="post" :key="post.id" @remove="removePost" />
+      </div>
+      <b-toast variant="danger" class="mb-2" v-else>
+        Error!
+      </b-toast>
+    </div>
   </div>
 </template>
 
@@ -18,6 +23,7 @@ export default {
   data() {
     return {
       posts: [],
+      loading: true,
       error: false,
     };
   },
@@ -47,8 +53,11 @@ export default {
         this.posts = data;
     })
     .catch(() => {
-        this.error = true;
-      });
+      this.error = true;
+    })
+    .then(()=> {
+      this.loading = false;
+    });
   },
 };
 </script>
