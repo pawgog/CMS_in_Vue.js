@@ -18,7 +18,7 @@
         <div class="card-body" v-html="post.content"></div>
         <div>
           <b-button variant="danger" @click="$router.push({ name: 'home' })">
-            <b-icon icon="arrow-left">Back</b-icon>
+            <b-icon icon="arrow-left"></b-icon> Back
           </b-button>
         </div>
       </b-card>
