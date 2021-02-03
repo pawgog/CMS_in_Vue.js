@@ -46,7 +46,7 @@ export default {
       .catch(() => {
         this.$router.push({ name: "404" })
       })
-      .then(()=> {
+      .finally(()=> {
         this.loading = false;
       });
   }

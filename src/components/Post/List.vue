@@ -55,7 +55,7 @@ export default {
     .catch(() => {
       this.error = true;
     })
-    .then(()=> {
+    .finally(()=> {
       this.loading = false;
     });
   },
