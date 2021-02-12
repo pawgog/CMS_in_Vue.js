@@ -20,6 +20,9 @@
         <b-form-group id="input-group-5" label="Image url:" label-for="img">
           <b-form-textarea id="img" v-model="post.img" type="text"></b-form-textarea>
         </b-form-group>
+        <div class="card-body__error card-body__error--display" v-if="errors.length">
+          <span v-bind:for="error in errors">{{ error }}</span>
+        </div>
         <div class="card-body__buttons">
           <b-button variant="danger" @click="$router.go(-1)">Back</b-button>
           <b-button type="submit" variant="primary" :disabled="!filled">Submit</b-button>
@@ -53,14 +56,13 @@ export default {
   },
   computed: {
     filled() {
-      const { title, date_posted, content} = this.post;
-      return title && date_posted && content;
+      const { title, date_posted, content, img } = this.post;
+      return title && date_posted && content && img;
     }
   },
   methods: {
     onSave() {
       const { title, author, date_posted, content, img } = this.post;
-      this.errors = [];
 
       if (!title) {
         this.errors.push("Title is required.");
@@ -68,26 +70,37 @@ export default {
       if (!author) {
         this.errors.push('Author is required.');
       }
+      if (!img) {
+        this.errors.push('Image is required.');
+      } else if (!this.validImg(img)) {
+        this.errors.push('Valid image required.');
+      }
       if (!this.errors.length) {
         return true;
       }
 
-      this.$http
-        .post(`${server.serverURL}/post`, {
-          title,
-          author,
-          date_posted,
-          content,
-          img,
-        })
-        .then(({ data }) => {
-          const { slug } = data.post;
-          this.$router.push({ path: `/post/${slug}` });
-        })
-        .catch(() => {
-          this.error = true;
-        });
+      if (!this.filled) {
+        this.$http
+          .post(`${server.serverURL}/post`, {
+            title,
+            author,
+            date_posted,
+            content,
+            img,
+          })
+          .then(({ data }) => {
+            const { slug } = data.post;
+            this.$router.push({ path: `/post/${slug}` });
+          })
+          .catch(() => {
+            this.error = true;
+          });
+      }
     },
+    validImg: function (img) {
+      var re = /(https?:\/\/.*\.(?:png|jpg))/i;
+      return re.test(img);
+    }
   },
 };
 </script>
@@ -100,6 +113,14 @@ export default {
     }
     &__error {
       color: red;
+    }
+    &__error--display {
+      margin: 20px 0;
+
+      span {
+        font-size: 16px;
+        font-weight: 600;
+      }      
     }
   }
 </style>
