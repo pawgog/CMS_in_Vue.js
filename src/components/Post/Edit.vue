@@ -60,21 +60,39 @@ export default {
   methods: {
     onSubmit() {
       const { _id, title, author, date_posted, content, img } = this.post;
-      this.$http.put(`${server.serverURL}/edit/${_id}`, {
-        _id,
-        title,
-        author,
-        date_posted,
-        content,
-        img,
-      })
-      .then(({ data }) => {
-        const { slug } = data.post;
-        this.$router.push({ path: `/post/${slug}` });
-      })
-      .catch(() => {
-        this.error = true;
-      });
+
+      if (!title) {
+        this.errors.push("Title is required.");
+      }
+      if (!author) {
+        this.errors.push('Author is required.');
+      }
+      if (!img) {
+        this.errors.push('Image is required.');
+      } else if (!this.validImg(img)) {
+        this.errors.push('Valid image required.');
+      }
+      if (!this.errors.length) {
+        return true;
+      }
+
+      if (!this.filled) {
+        this.$http.put(`${server.serverURL}/edit/${_id}`, {
+          _id,
+          title,
+          author,
+          date_posted,
+          content,
+          img,
+        })
+        .then(({ data }) => {
+          const { slug } = data.post;
+          this.$router.push({ path: `/post/${slug}` });
+        })
+        .catch(() => {
+          this.error = true;
+        });
+      }
     },
   },
   created() {
