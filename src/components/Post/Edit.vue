@@ -60,6 +60,7 @@ export default {
   methods: {
     onSubmit() {
       const { _id, title, author, date_posted, content, img } = this.post;
+      this.errors = [];
 
       if (!title) {
         this.errors.push("Title is required.");
