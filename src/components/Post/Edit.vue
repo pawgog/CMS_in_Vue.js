@@ -20,12 +20,16 @@
         <b-form-group id="input-group-5" label="Image url:" label-for="img">
           <b-form-textarea id="img" v-model="post.img" type="text"></b-form-textarea>
         </b-form-group>
+        <div class="card-body__error card-body__error--display" v-if="!filled">
+          <ul>
+            <li v-for="error in errors" :key="error">
+              {{ error }}
+            </li>
+          </ul>
+        </div>
         <div class="card-body__buttons">
           <b-button variant="danger" @click="$router.go(-1)">Back</b-button>
-          <b-button type="submit" variant="primary" :disabled="!filled">Submit</b-button>
-          <div class="card-body__error" v-if="!filled">
-            <span>(All inputs are required!)</span>
-          </div>
+          <b-button type="submit" variant="primary">Submit</b-button>
         </div>
       </b-form>
     </div>
@@ -53,8 +57,8 @@ export default {
   },
   computed: {
     filled() {
-      const { title, date_posted, content} = this.post;
-      return title && date_posted && content;
+      const { title, date_posted, content, img} = this.post;
+      return title && date_posted && content && img;
     }
   },
   methods: {
