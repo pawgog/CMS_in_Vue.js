@@ -6,10 +6,10 @@
     <div class="card-body">
       <b-form @submit.prevent="onSubmit">
         <b-form-group id="input-group-1" label="Title:" label-for="title">
-          <b-form-input id="title" v-model="post.title" type="text" required></b-form-input>
+          <b-form-input id="title" v-model="post.title" type="text"></b-form-input>
         </b-form-group>
         <b-form-group id="input-group-2" label="Author:" label-for="author">
-          <b-form-input id="author" v-model="post.author" type="text" required></b-form-input>
+          <b-form-input id="author" v-model="post.author" type="text"></b-form-input>
         </b-form-group>
         <b-form-group id="input-group-3" label="Date:" label-for="date_posted">
           <b-form-input id="date_posted" v-model="post.date_posted" type="date" required></b-form-input>

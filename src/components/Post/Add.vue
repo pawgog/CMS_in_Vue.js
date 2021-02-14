@@ -12,7 +12,7 @@
           <b-form-input id="author" v-model="post.author" type="text"></b-form-input>
         </b-form-group>
         <b-form-group id="input-group-3" label="Date:" label-for="date_posted">
-          <b-form-input id="date_posted" v-model="post.date_posted" type="date"></b-form-input>
+          <b-form-input id="date_posted" v-model="post.date_posted" type="date" required></b-form-input>
         </b-form-group>
         <b-form-group id="input-group-4" label="Content" label-for="content">
           <b-form-textarea id="content" v-model="post.content" rows="3" max-rows="6"></b-form-textarea>

@@ -4,7 +4,7 @@
     <div class="post-details">
       <span>{{ post.date_posted }}</span>
       <h5>{{ post.title }}</h5>
-      <router-link :to="{ name: 'post', params: { slug: post.slug }}"><b-button size="sm">Read more...</b-button></router-link>
+      <router-link :to="{ name: 'post', params: { slug: post.slug }}" v-if="post.content"><b-button size="sm">Read more...</b-button></router-link>
       <div class="btn-list">
         <router-link :to="{ name: 'postEdit', params: { slug: post.slug } }">
           <b-button variant="outline-primary"
