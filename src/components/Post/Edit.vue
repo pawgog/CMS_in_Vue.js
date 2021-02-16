@@ -20,7 +20,7 @@
         <b-form-group id="input-group-5" label="Image url:" label-for="img">
           <b-form-textarea id="img" v-model="post.img" type="text"></b-form-textarea>
         </b-form-group>
-        <div class="card-body__error card-body__error--display" v-if="!filled">
+        <div class="card-body__error" v-if="!filled">
           <ul>
             <li v-for="error in errors" :key="error">
               {{ error }}
@@ -45,6 +45,7 @@ export default {
   data() {
     return {
       post: {},
+      errors: [],
       error: false,
       form: {
         title: "",
@@ -121,7 +122,13 @@ export default {
       align-items: center;
     }
     &__error {
+      margin: 20px 0;
       color: red;
+
+      ul {
+        font-size: 16px;
+        font-weight: 600;
+      } 
     }
   }
 </style>
