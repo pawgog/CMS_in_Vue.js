@@ -1,24 +1,15 @@
-# vue_blog
+# Blog VueJS / NestJS
 
 ## Project setup
+
 ```
-npm install
+- git clone repo
+- npm install
+- npm start
 ```
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+### Project description
 
-### Compiles and minifies for production
 ```
-npm run build
+Blog with list of posts in VueJS and server api request based in NestJS
 ```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
