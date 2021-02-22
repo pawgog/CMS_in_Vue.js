@@ -13,3 +13,7 @@
 ```
 Blog with list of posts in VueJS and server api request based in NestJS
 ```
+
+### Project demo
+
+[Vue and NestJS blog app demo](https://blog-vue-app.netlify.app/)
