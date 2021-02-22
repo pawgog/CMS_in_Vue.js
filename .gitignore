@@ -23,3 +23,6 @@ pnpm-debug.log*
 *.sw?
 .eslintrc.js
 .prettierrc
+
+# Local Netlify folder
+.netlify
